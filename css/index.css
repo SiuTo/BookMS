@@ -1,0 +1,65 @@
+.page-head {
+	background-color: #F5F5F5;
+}
+
+.page-head-right {
+	background-color: #E7E7E7;
+	color: #000000;
+	font-size: 21px;
+	line-height: 1.3;
+	margin-top: 17px;
+	padding: 7px;
+	float: right;
+	border-radius: 7px;
+}
+
+.page-head-right a {
+	color: #000000;
+}
+
+.page-head-right a:hover, .page-head-right a:focus {
+	color: #337ab7;
+	text-decoration: none;
+}
+
+.page-head-right .dropdown-menu {
+	top: 125%;
+	left: -7px;
+}
+
+.page-body {
+	background-color: #202021;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	color: #ffffff;
+}
+
+.slogan {
+	font-size: 70px;
+}
+
+.signup {
+	color: #ffffff;
+	font-size: 14px;
+	line-height: 32px;
+}
+
+.signup:hover {
+	color: #ffffff;
+}
+
+.container-body {
+	margin-top: 3%;
+}
+
+.operation-list .btn {
+	display: block;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	width: 150px;
+}
+
+.btn {
+	width: 100px;
+}
+
