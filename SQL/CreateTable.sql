@@ -61,9 +61,10 @@ CREATE TABLE SINGLEBOOK
   BPLACE VARCHAR(100), #馆藏
   BSTATE INT, #状态
   /*
-    -1: BUYING
-    0: ON THE SHELF
-    1: BORROWED
+    -1:  购买中
+    0:   在架上
+    1:   被借阅
+    2:   被预约
    */
   BCANBORROW BOOLEAN, #是否可借阅
   /*
