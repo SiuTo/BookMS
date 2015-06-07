@@ -1,0 +1,5 @@
+DROP DATABASE BookMS;
+CREATE DATABASE BookMS;
+SOURCE CreateTable.sql;
+SOURCE InsertInfo.sql;
+
