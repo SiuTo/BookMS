@@ -41,24 +41,51 @@
 	</div>
 
 	<div class="container container-body">
-		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3">
-				<form method="post" action="search.php" class="form-horizontal">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Book Name" name="bname">
+		<div id="alertModal" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title"></h4>
 					</div>
-					<div class="form-group">
-						<div class="col-sm-2 col-sm-offset-5">
-							<button type="submit" class="btn btn-default">Search</button>
-						</div>
-					</div>
-					<p>
-						Hint: 支持模糊查询。
-					</p>
-				</form>
+					<div class="modal-body"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Search List</h3>
+			</div>
+
+			<div class="panel-body">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th><th>Book Name</th><th>Author</th><th>Press</th><th>Year</th><th>Index</th><th>ISBN</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+							require "../ConnectDB.php";
+							$rid=$_SESSION["userId"];
+							$bname=$_POST["bname"];
+							$result=mysql_query("SELECT BNAME, BAUTHOR, BPRESS, BYEAR, BINDEX, ISBN FROM BOOKINFO WHERE BNAME LIKE '%$bname%'");
+							$num=0;
+							while ($row=mysql_fetch_array($result))
+							{
+								++$num;
+								echo "<tr><td>$num</td><td><a href='#' onclick='loadList(\"$row[ISBN]\")'>$row[BNAME]</a></td><td>$row[BAUTHOR]</td><td>$row[BPRESS]</td><td>$row[BYEAR]</td><td>$row[BINDEX]</td><td>$row[ISBN]</td></tr>";
+							}
+						?>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="../../js/reader.js"></script>
 </body>
 
 </html>

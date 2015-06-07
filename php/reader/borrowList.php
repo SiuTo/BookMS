@@ -19,7 +19,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8">
-					<h1>Book Management System</h1>
+					<h1><a href="reader.php">Book Management System</a></h1>
 				</div>
 				<div class="col-sm-4">
 					<div class="page-head-right">
@@ -41,36 +41,32 @@
 	</div>
 
 	<div class="container container-body">
-		<div class="row">
-			<div class="col-sm-10 col-sm-offset-1">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Borrow List</h3>
-					</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Borrow List</h3>
+			</div>
 
-					<div class="panel-body">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>#</th><th>Book Name</th><th>Author</th><th>Press</th><th>Year</th><th>Place</th><th>Index</th><th>Borrow Time</th><th>Return Time</th><th>Is Return</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-									require "../ConnectDB.php";
-									$rid=$_SESSION["userId"];
-									$result=mysql_query("SELECT BANME, BAUTHOR, BPRESS, BYEAR, BPLACE, BINDEX, BORROWTIME, RETURNTIEM, ISRETURN FROM BORROWINFO, SINGLEBOOK, BOOKINFO WHERE RID='$rid' AND BORROWINFO.BOOKID=SINGLEBOOK.BOOKID AND SINGLEBOOK.ISBN=BOOKINFO.ISBN");
-									$num=0;
-									while ($row=mysql_fetch_array($result))
-									{
-										++$num;
-										echo "<tr><td>$num</td><td>$row[BNAME]</td><td>$row[BAUTHOR]</td><td>$row[BPRESS]</td><td>$row[BYEAR]</td><td>$row[BPLACE]</td><td>$row[BINDEX]</td><td>$row[BORROWTIME]</td><td>$row[RETURNTIME]</td><td>$row[ISRETURN]</td></tr>";
-									}
-								?>
-							</tbody>
-						</table>
-					</div>
-				</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th><th>Book Name</th><th>Author</th><th>Press</th><th>Year</th><th>Place</th><th>Index</th><th>Borrow Time</th><th>Return Time</th><th>Is Return</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+							require "../ConnectDB.php";
+							$rid=$_SESSION["userId"];
+							$result=mysql_query("SELECT BNAME, BAUTHOR, BPRESS, BYEAR, BPLACE, BINDEX, BORROWTIME, RETURNTIME, ISRETURN FROM BORROWINFO, SINGLEBOOK, BOOKINFO WHERE RID='$rid' AND BORROWINFO.BOOKID=SINGLEBOOK.BOOKID AND SINGLEBOOK.ISBN=BOOKINFO.ISBN ORDER BY BORROWTIME ASC");
+							$num=0;
+							while ($row=mysql_fetch_array($result))
+							{
+								++$num;
+								echo "<tr><td>$num</td><td>$row[BNAME]</td><td>$row[BAUTHOR]</td><td>$row[BPRESS]</td><td>$row[BYEAR]</td><td>$row[BPLACE]</td><td>$row[BINDEX]</td><td>$row[BORROWTIME]</td><td>$row[RETURNTIME]</td><td>$row[ISRETURN]</td></tr>";
+							}
+						?>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
