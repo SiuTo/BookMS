@@ -51,7 +51,7 @@
 					<?php
 						require "../ConnectDB.php";
 						if ($_SESSION["userType"]=="admin") $rid=$_GET["rid"]; else $rid=$_SESSION["userId"];
-						$result=mysql_query("SELECT RID, PASSWORD, RNAME, REMAIL FROM READER WHERE RID='$rid'");
+						$result=mysql_query("SELECT RID, PASSWORD, RNAME, REMAIL, LEVELNAME FROM READER WHERE RID='$rid'");
 						$row=mysql_fetch_array($result);
 					?>
 
@@ -90,13 +90,24 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label for="level" class="col-sm-3 control-label">Level Name</label>
+								<div class="col-sm-7">
+									<select class="form-control" id="level" name="level">
+										<option value="professor" <?php if ($row["LEVELNAME"]=="professor") echo "selected='selected'" ?>>Professor</option>
+										<option value="undergraduate" <?php if ($row["LEVELNAME"]=="undergraduate") echo "selected='selected'" ?>>Undergraduate</option>
+										<option value="graduate" <?php if ($row["LEVELNAME"]=="graduate") echo "selected='selected'" ?>>Graduate</option>
+										<option value="doctor" <?php if ($row["LEVELNAME"]=="doctor") echo "selected='selected'" ?>>Doctor</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
 								<label for="email" class="col-sm-3 control-label">Email</label>
 								<div class="col-sm-7">
 									<input type="email" class="form-control" id="email" name="email" value="<?php echo $row["REMAIL"];?>" required="required">
 								</div>
 							</div>
 							<button type="submit" class="btn btn-default col-sm-offset-3 col-sm-2">Submit</button>
-							<button type="button" onclick="window.location.href='<?php if ($_SESSION["userType"]=="admin") echo '../admin/admin.php'; else echo 'reader.php';?>'" class="btn btn-default col-sm-offset-2 col-sm-2">Back</button>
+							<button type="button" onclick="window.location.href='<?php if ($_SESSION["userType"]=="admin") echo '../admin/reader.php'; else echo 'reader.php';?>'" class="btn btn-default col-sm-offset-2 col-sm-2">Back</button>
 						</form>
 					</div>
 				</div>

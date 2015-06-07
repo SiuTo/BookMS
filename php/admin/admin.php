@@ -30,7 +30,6 @@
 							</a>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 								<li role="presentation"><a role="menuitem" href="profile.php">Profile</a></li>
-								<li role="presentation"><a role="menuitem" href="borrowList.php">Borrow List</a></li>
 								<li role="presentation"><a role="menuitem" href="../signout.php">Sign out</a></li>
 							</ul>
 						</div>
@@ -41,32 +40,12 @@
 	</div>
 
 	<div class="container container-body">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Borrow List</h3>
-			</div>
-
-			<div class="panel-body">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>#</th><th>Book Name</th><th>Author</th><th>Press</th><th>Year</th><th>Place</th><th>Index</th><th>Borrow Time</th><th>Return Time</th><th>Is Return</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-							require "../ConnectDB.php";
-							$rid=$_SESSION["userId"];
-							$result=mysql_query("SELECT BNAME, BAUTHOR, BPRESS, BYEAR, BPLACE, BINDEX, BORROWTIME, RETURNTIME, ISRETURN FROM BORROWINFO, SINGLEBOOK, BOOKINFO WHERE RID='$rid' AND BORROWINFO.BOOKID=SINGLEBOOK.BOOKID AND SINGLEBOOK.ISBN=BOOKINFO.ISBN ORDER BY RETURNTIME ASC");
-							$num=0;
-							while ($row=mysql_fetch_array($result))
-							{
-								++$num;
-								echo "<tr><td>$num</td><td>$row[BNAME]</td><td>$row[BAUTHOR]</td><td>$row[BPRESS]</td><td>$row[BYEAR]</td><td>$row[BPLACE]</td><td>$row[BINDEX]</td><td>$row[BORROWTIME]</td><td>$row[RETURNTIME]</td><td>$row[ISRETURN]</td></tr>";
-							}
-						?>
-					</tbody>
-				</table>
+		<div class="row">
+			<div class="col-sm-3 col-sm-offset-5 btnList">
+				<a type="button" class="btn btn-primary btn-lg" href="level.php">Level Management</a>
+				<a type="button" class="btn btn-primary btn-lg" href="reader.php">Reader Management</a>
+				<a type="button" class="btn btn-primary btn-lg" href="officer.php">Officer Management</a>
+				<a type="button" class="btn btn-primary btn-lg" href="book.php">Book Management</a>
 			</div>
 		</div>
 	</div>

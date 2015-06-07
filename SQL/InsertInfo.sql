@@ -1,10 +1,10 @@
 USE BookMS;
 
 INSERT INTO USERLEVEL
-VALUES('professor',20),   #教师
-  ('undergraduate',5),  #本科生
-  ('graduate',10),      #研究生
-  ('doctor',10);        #博士
+VALUES('professor',20,60),   #教师
+  ('undergraduate',5,30),  #本科生
+  ('graduate',10,20),      #研究生
+  ('doctor',10,10);        #博士
 
 INSERT INTO READER
   VALUES('13307130337','1111','韩佩儒','13307130337@fudan.edu.cn','undergraduate');
