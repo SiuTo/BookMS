@@ -30,6 +30,7 @@
 							</a>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 								<li role="presentation"><a role="menuitem" href="profile.php">Profile</a></li>
+								<li role="presentation"><a role="menuitem" href="borrowList.php">Borrow List</a></li>
 								<li role="presentation"><a role="menuitem" href="../signout.php">Sign out</a></li>
 							</ul>
 						</div>
