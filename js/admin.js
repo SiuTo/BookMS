@@ -2,7 +2,7 @@ $("#readerQuery").click(function() {
 	$("#showResultPanel").load(
 		"readerQuery.php",
 		{
-			rid: $("#rid").val(),
+			rid: $("#rid").val()
 		}
 	);
 });
@@ -16,6 +16,18 @@ function deleteReader()
 		function(){
 			$("#showResultPanel").text("");
 		}
+	);
+}
+
+function modifyLevel(levelName, borrowNum, period)
+{
+	$.post("modifyLevel.php",
+		{
+			levelName: levelName,
+			borrowNum: borrowNum,
+			period: period
+		},
+		alert("Succeed!")
 	);
 }
 
