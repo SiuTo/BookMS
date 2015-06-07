@@ -16,9 +16,9 @@
 	require "ConnectDB.php";
 
 	if ($userType=="reader")
-		$result=mysql_query("SELECT SID, PASSWORD FROM STUDENT WHERE SID='$userId'");
-	else if ($userType=="worker")
-		$result=mysql_query("SELECT TID, PASSWORD FROM TEACHER WHERE TID='$userId'");
+		$result=mysql_query("SELECT RID, PASSWORD FROM READER WHERE RID='$userId'");
+	else if ($userType=="officer")
+		$result=mysql_query("SELECT OID, PASSWORD FROM OFFICER WHERE OID='$userId'");
 	else if ($userType=="admin")
 		$result=mysql_query("SELECT AID, PASSWORD FROM ADMIN WHERE AID='$userId'");
 	else {
@@ -50,10 +50,10 @@
 			echo "<script>alert('User exists!'); history.go(-1);</script>";
 			exit;
 		}
-		if ($userType=="student")
-			mysql_query("INSERT INTO STUDENT(SID, PASSWORD) VALUES ('$userId', '$password')");
-		else if ($userType=="teacher")
-			mysql_query("INSERT INTO TEACHER(TID, PASSWORD) VALUES ('$userId', '$password')");
+		if ($userType=="reader")
+			mysql_query("INSERT INTO READER(RID, PASSWORD) VALUES ('$userId', '$password')");
+		else if ($userType=="officer")
+			mysql_query("INSERT INTO OFFICER(OID, PASSWORD) VALUES ('$userId', '$password')");
 		else if ($userType=="admin")
 			mysql_query("INSERT INTO ADMIN(AID, PASSWORD) VALUES ('$userId', '$password')");
 		echo "<script>alert('Succeed!'); history.go(-1);</script>";

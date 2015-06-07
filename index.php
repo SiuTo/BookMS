@@ -59,7 +59,7 @@
 							<div class="col-sm-8">
 								<select class="form-control" name="userType">
 									<option value="reader">Reader</option>
-									<option value="worker">Worker</option>
+									<option value="officer">Officer</option>
 									<option value="admin">Administrator</option>
 								</select>
 							</div>
