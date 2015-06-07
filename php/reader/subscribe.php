@@ -2,57 +2,67 @@
 	require "../verifyUser.php";
 	require "../ConnectDB.php";
 
+    function mysql_query_one($sql)
+    {
+        $result = mysql_query($sql);
+        $row = mysql_fetch_array($result);
+        return $row[0];
+    }
+
 	$rid=$_SESSION["userId"];
 	$bookid=$_GET["bookid"];
 
-
-    $result = mysql_query("SELECT BSTATE, BCANBORROW FROM SINGLEBOOK WHERE BID = $bookid");
-    $row = mqsql_fetch_array($result);
+    $result = mysql_query("SELECT BSTATE, BCANBORROW FROM SINGLEBOOK WHERE BOOKID = '$bookid'");
+    $row = mysql_fetch_array($result);
     if (empty($row))
     {
-        echo "Fail: Book $bookid doesn't exist!";
+        echo "<script>alert('Fail: Book $bookid doesn\'t exist!');window.location.href='reader.php';</script>";
         exit;
     }
 
     $bstat = $row["BSTATE"];
-    if (bstat == -1)
+    if ($bstat == -1)
     {
-        echo "Fail: Book $bookid is on purchasing";
+        echo "<script>alert('Fail: Book $bookid is on purchasing.');window.location.href='reader.php';</script>";
         exit;
     }
-    else if (bstat == 1)
+    else if ($bstat == 1)
     {
-        echo "Fail: Book $bookid is out on loan";
+        echo "<script>alert('Fail: Book $bookid is out on loan.');window.location.href='reader.php';</script>";
         exit;
     }
-    else if (bstat == 2)
+    else if ($bstat == 2)
     {
-        echo "Fail: Book $bookid is reserved by others.";
+        echo "<script>alert('Fail: Book $bookid is reserved by others.');window.location.href='reader.php';</script>";
         exit;
     }
 
     $bcanborrow = $row["BCANBORROW"];
-    if (bcanborrow == 0)
+    if ($bcanborrow == 0)
     {
-        echo "Fail: Book $bookid is closed reserved";
+        echo "<script>alert('Fail: Book $bookid is closed reserved.');window.location.href='reader.php';</script>";
         exit;
     }
 
-    $BORROWED = mysql_query("SELECT SUM(BORROWID) FROM BORROWINFO WHERE RID = $rid");
-    $LEVEL = mysql_query("SELECT LEVELNAME FROM READER WHERE RID = $rid");
-    $CANBORROW = mysql_query("SELECT BORROWNUM FROM USERLEVEL WHERE LEVELNAME = $LEVEL");
+    $BORROWED = mysql_query_one("SELECT SUM(BORROWID) FROM BORROWINFO WHERE RID = '$rid'");
+    $LEVEL = mysql_query_one("SELECT LEVELNAME FROM READER WHERE RID = '$rid'");
+    $CANBORROW = mysql_query_one("SELECT BORROWNUM FROM USERLEVEL WHERE LEVELNAME = '$LEVEL'");
 
     if ($BORROWED == $CANBORROW)
     {
-        echo "Fail: You have already borrowed $BORROED books. You can not borrow more books.";
+        echo "<script>alert('Fail: You have already borrowed $BORROED books. You can not borrow more books.');window.location.href='reader.php';</script>";
         exit;
     }
 
-    $BORROWID = mysql_query("SELECT BORROWID FROM BORROWINFO ORDER BY BOOKID DESC LIMIT 1) FROM BORROWINFO WHERE RID = $rid");
-    $BORROWID = $BORROWID + 1;
-    mysql_query("INSERT INTO BORROWINFO VALUES('$BORROWID', '$rid', '$courseId', '', '', ''");
+    //$CURDATE = mysql_query("SELECT CURDATE()");
 
-    mysql_query("UPDATE SINGLEBOOK SET BSTATE =2 WHERE BOOKID = $bookid");
+
+    $BORROWID = mysql_query_one("SELECT BORROWID FROM BORROWINFO WHERE RID = '$rid' ORDER BY BORROWID DESC");
+    $BORROWID = $BORROWID + 1;
+
+    mysql_query("INSERT INTO BORROWINFO VALUES ( '$BORROWID', '$rid', '$bookid', '', '', '' )");
+
+    mysql_query("UPDATE SINGLEBOOK SET BSTATE =2 WHERE BOOKID = '$bookid'");
 
 	echo '<script>alert("Succeed!");window.location.href="reader.php";</script>';
 
