@@ -36,5 +36,4 @@
           </form>';
     */
 
-
 /* End of file officerQuery.php */

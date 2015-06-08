@@ -28,6 +28,18 @@ function deleteReader()
 	);
 }
 
+function deleteOfficer()
+{
+    $.post("deleteOfficer.php",
+        {
+            oid: $("#oid").val()
+        },
+        function(){
+            $("#showResultPanel").text("");
+        }
+    );
+}
+
 function modifyLevel(levelName, borrowNum, period)
 {
 	$.post("modifyLevel.php",
