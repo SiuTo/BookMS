@@ -3,7 +3,8 @@
 	require "../ConnectDB.php";
 
 	$result=mysql_query("SELECT RID FROM READER WHERE RID='$_POST[rid]'");
-	if (!empty(mysql_fetch_array($result)))
+    $row = mysql_fetch_array($result);
+    if (!empty($row))
 	{
 		echo "<script>alert('The reader $_POST[rid] exists!');history.go(-1);</script>";
 		exit;
