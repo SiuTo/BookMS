@@ -66,5 +66,6 @@
 
 	echo '<script>alert("Succeed!");window.location.href="reader.php";</script>';
 
-?>
+
+/* End of file officer.php */
 

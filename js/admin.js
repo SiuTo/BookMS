@@ -7,6 +7,15 @@ $("#readerQuery").click(function() {
 	);
 });
 
+$("#officerQuery").click(function() {
+    $("#showResultPanel").load(
+        "officerQuery.php",
+        {
+            oid: $("#oid").val()
+        }
+    );
+});
+
 function deleteReader()
 {
 	$.post("deleteReader.php",
