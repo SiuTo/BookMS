@@ -105,17 +105,15 @@
 									<h3 class="panel-title">Operation panel</h3>
 								</div>
 								<div class="panel-body">
-									<form class="form">
+									<form class="operation-list">
 										<div class="form-group">
-											<label for="teaTid" class="control-label">Teacher Id</label>
-											<input type="text" id="teaTid" class="form-control">
+											<label for="isbn" class="control-label">ISBN</label>
+											<input type="text" id="isbn" class="form-control">
 										</div>
-										<div class="form-group">
-											<label for="teaDid" class="control-label">Department Id</label>
-											<input type="text" id="teaDid" class="form-control">
-										</div>
-										<button type="button" class="btn btn-default" id="teaQuery">Query</button>
-										<a type="button" class="btn btn-default" href="teaAdd.php">Add</a>
+										<button type="button" class="btn btn-default" id="queryBook">Query Book</button>
+										<button type="button" class="btn btn-default" id="editBook">Edit Book</button>
+										<a type="button" class="btn btn-default" href="addBook.php">Add Book</a>
+										<button type="button" class="btn btn-default" id="dropBook">Drop Book</button>
 									</form>
 								</div>
 							</div>
@@ -123,9 +121,9 @@
 						<div class="col-sm-8">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h3 class="panel-title">Teacher Panel</h3>
+									<h3 class="panel-title">List of single books</h3>
 								</div>
-								<div id="showResultPanel-tea" class="panel-body">
+								<div id="showResultPanel-book" class="panel-body">
 								</div>
 							</div>
 						</div>

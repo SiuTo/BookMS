@@ -19,3 +19,15 @@ $("#returnBook").click(function() {
 	$("#showResultPanel-reader").load("queryReader.php", {rid: $("#rid").val()});
 });
 
+$("#queryBook").click(function() {
+	$("#showResultPanel-book").load("queryBook.php", {isbn: $("#isbn").val()});
+});
+
+$("#editBook").click(function() {
+	window.location.href="editBook.php?isbn="+$("#isbn").val();
+});
+
+$("#dropBook").click(function() {
+	$.post("dropBook.php", {isbn: $("#isbn").val()}, alertResult);
+});
+

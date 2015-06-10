@@ -1,0 +1,18 @@
+<?php
+	require "../verifyUser.php";
+	require "../ConnectDB.php";
+
+	$isbn=$_POST["isbn"];
+
+	$result=mysql_query("SELECT BOOKID, BNAME, BSTATE, BPLACE, BINDEX FROM SINGLEBOOK, BOOKINFO WHERE SINGLEBOOK.ISBN='$isbn' AND BOOKINFO.ISBN='$isbn'");
+	echo "<table class='table table-striped'>";
+	echo "<thead><tr><th>#</th><th>Book Name</th><th>State</th><th>Place</th><th>Index</th><th></th></tr></thead><tbody>";
+	$num=0;
+	while ($row=mysql_fetch_array($result))
+	{
+		++$num;
+		echo "<tr><td>$num</td><td>$row[BNAME]</td><td>$row[BSTATE]</td><td>$row[BPLACE]</td><td>$row[BINDEX]</td><td><a href='subscribe.php?bookid=$row[BOOKID]'>Subscribe</a></td></tr>";
+	}
+	echo '</tbody></table>';
+?>
+
