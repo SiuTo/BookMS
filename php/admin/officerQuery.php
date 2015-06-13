@@ -1,7 +1,7 @@
 <?php
     require "../verifyUser.php";
     require "../ConnectDB.php";
-    
+
     $oid=$_POST["oid"];
     
     $result=mysql_query("SELECT ONAME FROM OFFICER WHERE oid='$oid'");

@@ -3,7 +3,7 @@ A simple book management system.
 
 ## Documentation
 
-### Dependences
+### Dependence
 
 * php
 * mysql
@@ -17,5 +17,28 @@ A simple book management system.
 * 管理员（账号，密码，姓名）
 * 借阅（处理编号，读者ID，条码，借阅时间，归还/应还时间，是否已归还）
 * 图书单册信息（条码，ISBN，馆藏，状态，是否可借阅）
+ * 状态包括：on purchase 购买中 / on the shelf 在架上 / out on loan 被他人借阅
+      / reserved by others 被他人预约
+ * 是否可借阅分为：for circulation 外借图书 / closed reserved 闭馆保存
 * 图书基本信息（ISBN，书名，作者，出版社，年份，索引号）
+
+
+### 管理员
+* 修改个人信息
+* 管理等级: 更改每个等级的读者能借书的数量及借书时长
+* 管理读者: 查询读者，添加读者，修改读者信息，// 为读者添加借阅图书，为读者删除借阅图书
+* 管理工作人员：查询工作人员，添加工作人员，修改工作人员信息
+* // 管理图书
+
+### 工作人员
+* 修改个人信息
+* 管理读者
+* 管理图书
+
+### 读者
+* 修改个人信息
+* 查看借阅信息
+* 查询图书
+* 预约图书
+
 
