@@ -16,12 +16,12 @@
 
     if (empty($row))
     {
-        echo '<script>alert("The isbn '.$isbn.' doesn\'t exist!");window.location.href="editBook.php?isbn="</script>';
+        echo '<script>alert("The isbn '.$isbn.' doesn\'t exist!");history.go(-1);</script>';
         exit;
     }
     else if ( $bindex == "" )
     {
-        echo '<script>alert("The book index can not be null");window.location.href="editBook.php?isbn='.$isbn.'"</script>';
+        echo '<script>alert("The book index can not be null");history.go(-1);</script>';
     }
     else
     {
@@ -29,7 +29,7 @@
         mysql_query("UPDATE BOOKINFO SET BNAME='$bname', BAUTHOR = '$bauthor', BPRESS = '$bpress',
                         BYEAR = '$byear', BINDEX = '$bindex' WHERE ISBN ='$isbn'");
 
-        echo '<script>alert("Succeed!");window.location.href="editBook.php?isbn="</script>';
+        echo "<script>alert('Succeed!');window.location.href='editBook.php?isbn=$isbn';</script>";
     }
 
 /* end of file of modifyBool.php */

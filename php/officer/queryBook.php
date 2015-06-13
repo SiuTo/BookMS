@@ -4,6 +4,15 @@
 
 	$isbn=$_POST["isbn"];
 
+	$result=mysql_query("SELECT BNAME FROM BOOKINFO WHERE ISBN='$isbn'");
+	$row=mysql_fetch_array($result);
+	if (empty($row))
+	{
+		echo '<script>alert("The book '.$isbn.' doesn\'t exist!");</script>';
+		exit;
+	}
+	echo "<div class='row'><h4 class='col-sm-6'>Book: $isbn $row[BNAME]</h4></div>";
+
 	$result=mysql_query("SELECT BOOKID, BPLACE, BSTATE, BCANBORROW FROM SINGLEBOOK WHERE SINGLEBOOK.ISBN='$isbn' ");
 	echo "<table class='table table-striped'>";
 	echo "<thead><tr><th>#</th><th>Book ID</th><th>State</th><th>Place</th><th>Can Borrow</th><th></th></tr></thead><tbody>";
