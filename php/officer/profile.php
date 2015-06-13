@@ -49,7 +49,7 @@ require "../verifyUser.php";
 
                 <?php
                 require "../ConnectDB.php";
-                if ($_SESSION["userType"]=="admin") $rid=$_GET["rid"]; else $rid=$_SESSION["userId"];
+                if ($_SESSION["userType"]=="admin") $rid=$_GET["oid"]; else $rid=$_SESSION["userId"];
                 $result=mysql_query("SELECT OID, PASSWORD, ONAME, OEMAIL FROM OFFICER WHERE OID='$rid'");
                 $row=mysql_fetch_array($result);
                 ?>

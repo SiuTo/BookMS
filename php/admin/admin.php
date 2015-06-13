@@ -45,7 +45,6 @@
 				<a type="button" class="btn btn-primary btn-lg" href="level.php">Level Management</a>
 				<a type="button" class="btn btn-primary btn-lg" href="reader.php">Reader Management</a>
 				<a type="button" class="btn btn-primary btn-lg" href="officer.php">Officer Management</a>
-				<a type="button" class="btn btn-primary btn-lg" href="book.php">Book Management</a>
 			</div>
 		</div>
 	</div>
