@@ -7,7 +7,7 @@
 	$isbn=$_POST["isbn"];
 
 	mysql_query("DELETE FROM BORROWINFO WHERE ISBN = '$isbn'");
-	mysql_query("DELETE FROM BOOKINFO WHERE ISBN ='$isbn'");
+	mysql_query("DELETE FROM BOOKINFO  WHERE ISBN ='$isbn'");
 	mysql_query("DELETE FROM SINGLEBOOK WHERE ISBN ='$isbn'");
 
 

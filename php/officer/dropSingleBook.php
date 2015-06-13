@@ -6,8 +6,7 @@
 	
 	$bookid=$_GET["bookid"];
 
-    mysql_query("DELETE FROM BORROWINFO WHERE BID = '$bid'");
-    mysql_query("DELETE FROM SINGLEBOOK WHERE BID ='$bid'");
+    mysql_query("DELETE FROM SINGLEBOOK WHERE BOOKID ='$bookid'");
 
 	echo "<script>alert('Succeed: Book $bookid has been dropped!');window.location.href='officer.php';</script>";
 
