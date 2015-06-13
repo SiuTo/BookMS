@@ -71,13 +71,20 @@
 							<div class="form-group">
 								<label for="state" class="col-sm-3 control-label">State</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" name="state" id="state" value="<?php echo $row["BSTATE"];?>" required="required">
+									<select class="form-control" id="state" name="state">
+										<option value="-1" <?php if ($row["BSTATE"]==-1) echo "selected='selected'" ?>>购买中</option>
+										<option value="0" <?php if ($row["BSTATE"]==0) echo "selected='selected'" ?>>在架上</option>
+										<option value="1" <?php if ($row["BSTATE"]==1) echo "selected='selected'" ?>>被借阅</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="canborrow" class="col-sm-3 control-label">Can Borrow</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" name="canborrow" id="canborrow" value="<?php echo $row["BCANBORROW"];?>" required="required">
+									<select class="form-control" id="canborrow" name="canborrow">
+										<option value="0" <?php if ($row["BCANBORROW"]==0) echo "selected='selected'" ?>>保留图书/不可借阅</option>
+										<option value="1" <?php if ($row["BCANBORROW"]==1) echo "selected='selected'" ?>>出借图书</option>
+									</select>
 								</div>
 							</div>
 							<button type="submit" class="btn btn-default col-sm-offset-3 col-sm-2">Submit</button>

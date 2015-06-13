@@ -30,7 +30,5 @@
 			<label for="bookid">Book Id</label>
 			<input type="text" class="form-control" id="bookid">
 		</div>
-		<button type="button" onclick="addReaderBook()" class="btn btn-default">Add</button>
-		<button type="button" onclick="dropReaderBook()" class="btn btn-default">Drop</button>
 	</form>';
 

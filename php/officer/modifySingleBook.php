@@ -9,20 +9,20 @@
 	$bstate=$_POST["state"];
 	$bcanborrow=$_POST["canborrow"];
 
-    $result=mysql_query("SELECT BID FROM SINGLEBOOK WHERE BID ='$bid'");
+    $result=mysql_query("SELECT BOOKID FROM SINGLEBOOK WHERE BOOKID ='$bookid'");
     $row = mysql_fetch_array( $result );
 
     if (empty($row))
     {
-        echo '<script>alert("The book id '.$isbn.' doesn\'t exist!");window.location.href="editBook.php?isbn="</script>';
+        echo '<script>alert("The book id '.$isbn.' doesn\'t exist!");history.go(-1);"</script>';
         exit;
     }
     else
     {
         mysql_query("UPDATE SINGLEBOOK SET BPLACE = '$bplace', BSTATE = '$bstate', BCANBORROW = '$bcanborrow'
-                                      WHERE BID = '$bookid'");
+                                      WHERE BOOKID = '$bookid'");
 
-        echo "<script>alert('Succeed!');window.location.href='editSingleBook.php?bookid=$bookid'</script>";
+        echo "<script>alert('Succeed!');window.location.href='editSingleBook.php?bookid=$bookid';</script>";
     }
 
 /* end of file modifySingleBook.php */
