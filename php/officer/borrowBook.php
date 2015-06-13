@@ -62,7 +62,7 @@
 
     mysql_query("INSERT INTO BORROWINFO VALUES ( '$BORROWID', '$rid', '$bookid', CURRENT_DATE, '', 0 )");
 
-    mysql_query("UPDATE SINGLEBOOK SET BSTATE =2 WHERE BOOKID = '$bookid'");
+    mysql_query("UPDATE SINGLEBOOK SET BSTATE = 1 WHERE BOOKID = '$bookid'");
 
 	echo "Succeed: Book $bookid borrowed!";
 
