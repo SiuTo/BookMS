@@ -51,12 +51,20 @@
 			exit;
 		}
 		if ($userType=="reader")
-			mysql_query("INSERT INTO READER(RID, PASSWORD) VALUES ('$userId', '$password')");
+        {
+            mysql_query("INSERT INTO READER(RID, PASSWORD, LEVELNAME) VALUES ('$userId', '$password', 'undergraduate')");
+            echo "<script>alert('Succeed! Your level now is Undergraduate, please edit your level in the profile page.'); history.go(-1);</script>";
+        }
 		else if ($userType=="officer")
-			mysql_query("INSERT INTO OFFICER(OID, PASSWORD) VALUES ('$userId', '$password')");
+        {
+            mysql_query("INSERT INTO OFFICER(OID, PASSWORD) VALUES ('$userId', '$password')");
+            echo "<script>alert('Succeed!'); history.go(-1);</script>";
+        }
 		else if ($userType=="admin")
-			mysql_query("INSERT INTO ADMIN(AID, PASSWORD) VALUES ('$userId', '$password')");
-		echo "<script>alert('Succeed!'); history.go(-1);</script>";
+        {
+            mysql_query("INSERT INTO ADMIN(AID, PASSWORD) VALUES ('$userId', '$password')");
+            echo "<script>alert('Succeed!'); history.go(-1);</script>";
+        }
 	}
 ?>
 
