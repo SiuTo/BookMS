@@ -12,6 +12,6 @@
 	mysql_query("DELETE FROM BOOKINFO  WHERE ISBN ='$isbn'");
 
 	echo "Succeed: Book $isbn has been dropped!";
-    histary.go(-1);
+    //histary.go(-1);
 
 /* end of file dropBook.php */

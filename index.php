@@ -38,7 +38,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8">
-					<p class="slogan">Powerful, flexible, stable</p>
+					<p class="slogan">Try this brand new Library system</p>
 				</div>
 				<div class="col-sm-4">
 					<form action="php/login.php" method="post" class="form-horizontal">

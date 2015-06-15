@@ -28,7 +28,7 @@
 	}
 
 	mysql_query("UPDATE READER SET RNAME='$_POST[name]', LEVELNAME='$_POST[level]', REMAIL='$_POST[email]' WHERE RID='$rid'");
-	if ($userType=="admin") $url="profile.php?sid=$sid"; else $url="profile.php";
+	if ($userType=="admin") $url="profile.php?rid=$rid"; else $url="profile.php";
 	echo '<script>alert("Succeed:\n\n\tUpdate profile successfully!");window.location.href="'.$url.'";</script>';
 ?>
 

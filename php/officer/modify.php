@@ -28,7 +28,7 @@ if ($userType=="officer")
 }
 
 mysql_query("UPDATE OFFICER SET ONAME='$_POST[name]',  OEMAIL='$_POST[email]' WHERE OID='$rid'");
-if ($userType=="admin") $url="profile.php?sid=$sid"; else $url="profile.php";
+if ($userType=="admin") $url="profile.php?oid=$rid"; else $url="profile.php";
 echo '<script>alert("Succeed:\n\n\tUpdate profile successfully!");window.location.href="'.$url.'";</script>';
 
 /* End of file modify.php */

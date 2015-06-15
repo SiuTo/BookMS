@@ -44,13 +44,13 @@
         exit;
     }
 
-    $BORROWED = mysql_query_one("SELECT SUM(BORROWID) FROM BORROWINFO WHERE RID = '$rid'");
+    $BORROWED = mysql_query_one("SELECT COUNT(BORROWID) FROM BORROWINFO WHERE RID = '$rid' AND ISRETURN = 0 ");
     $LEVEL = mysql_query_one("SELECT LEVELNAME FROM READER WHERE RID = '$rid'");
     $CANBORROW = mysql_query_one("SELECT BORROWNUM FROM USERLEVEL WHERE LEVELNAME = '$LEVEL'");
 
-    if ($BORROWED == $CANBORROW)
+    if ($BORROWED >= $CANBORROW)
     {
-        echo "Fail: You have already borrowed $BORROED books. You can not borrow more books.";
+        echo "Fail: The reader can not borrow more books. $BORROWED: $CANBORROW";
         exit;
     }
 
@@ -60,7 +60,8 @@
     $BORROWID = mysql_query_one("SELECT BORROWID FROM BORROWINFO WHERE RID = '$rid' ORDER BY BORROWID DESC");
     $BORROWID = $BORROWID + 1;
 
-    mysql_query("INSERT INTO BORROWINFO VALUES ( '$BORROWID', '$rid', '$bookid', CURRENT_DATE, '', 0 )");
+    $BTIME = mysql_query_one("SELECT PERIOD FROM USERLEVEL WHERE LEVELNAME = (SELECT LEVELNAME FROM READER WHERE RID = '$rid' )");
+    mysql_query("INSERT INTO BORROWINFO VALUES ( '$BORROWID', '$rid', '$bookid', CURRENT_DATE, DATE_ADD(CURRENT_DATE,INTERVAL $BTIME DAY), 0 )");
 
     mysql_query("UPDATE SINGLEBOOK SET BSTATE = 1 WHERE BOOKID = '$bookid'");
 

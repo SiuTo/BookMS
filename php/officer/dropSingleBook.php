@@ -8,7 +8,9 @@
 
     mysql_query("DELETE FROM SINGLEBOOK WHERE BOOKID ='$bookid'");
 
-	echo "<script>alert('Succeed: Book $bookid has been dropped!');window.location.href='officer.php';</script>";
+	echo "<script>alert('Succeed: Book $bookid has been dropped!');history.go(-1)</script>";
+
+    //window.location.href='officer.php';;
 
 /* end of file dropSingleBook.php */
 

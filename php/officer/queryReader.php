@@ -13,7 +13,7 @@
 	}
 	echo "<div class='row'><h4 class='col-sm-6'>Reader: $rid $row[RNAME]</h4></div>";
 
-	$result=mysql_query("SELECT BNAME, BAUTHOR, SINGLEBOOK.BOOKID, BORROWTIME, RETURNTIME FROM BORROWINFO, SINGLEBOOK, BOOKINFO WHERE RID='$rid' AND BORROWINFO.BOOKID=SINGLEBOOK.BOOKID AND SINGLEBOOK.ISBN=BOOKINFO.ISBN AND ISRETURN=0");
+	$result=mysql_query("SELECT BNAME, BAUTHOR, SINGLEBOOK.BOOKID, BORROWTIME, RETURNTIME FROM BORROWINFO, SINGLEBOOK, BOOKINFO WHERE RID='$rid' AND BORROWINFO.BOOKID=SINGLEBOOK.BOOKID AND SINGLEBOOK.ISBN=BOOKINFO.ISBN AND ISRETURN = 0");
 	echo '<table class="table table-striped">';
 	echo '<thead><tr><th>#</th><th>Book Name</th><th>Author</th><th>Book ID</th><th>Borrow Time</th><th>Time to Return</th></tr></thead><tbody>';
 	$num=0;

@@ -25,10 +25,10 @@
 	}
 	echo '</tbody></table>';
 
-	echo '<form class="form-inline">
+	/*echo '<form class="form-inline">
 		<div class="form-group">
 			<label for="bookid">Book Id</label>
 			<input type="text" class="form-control" id="bookid">
 		</div>
-	</form>';
+	</form>';*/
 
